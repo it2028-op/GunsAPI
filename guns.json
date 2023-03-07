@@ -1,0 +1,22 @@
+[
+  {
+      "id":1,
+      "name":"AK-47",
+      "year":1949,
+      "state": "SSSR",
+      "inventor": "Michail Kalašnikov",
+      "munition": "7,62 × 39 mm",
+      "cadence": 600,
+      "velocity": 715,
+      "lenght": 870,
+      "barrel_lenght": 415,
+      "weight": 4.3,
+      "description":"Ruská útočná puška vytvořena v Sovětském svazu Michailem Kalašnikovem.",
+      "rating": 9.8,
+      "url":"https://en.wikipedia.org/wiki/File:AK-47_type_II_noBG.png",
+      "groups":[
+         "Útočná puška",
+         "Poloautomaty"
+      ]
+   }
+]
