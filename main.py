@@ -6,12 +6,13 @@ from enum import Enum
 
 class GunRecord(BaseModel):
     name: str
+    type: str
     manufacturer: str
     trigger: str
-    length: int
-    barrel_length: int
-    weight: float
-    magazine: int
+    length: str
+    barrel_length: str
+    weight: str
+    magazine: str
     url: str
 
     @staticmethod
@@ -76,11 +77,6 @@ async def get_guns():
 @app.get("/guns/{id_gun}", response_model=GunRecord)
 async def get_guns(id_gun: int):
     return db.get(id_gun)
-
-
-@app.get("/guns/{category}")
-async def get_cat(category: Cat):
-    return {"category": category}
 
 
 @app.post("/guns", response_model=GunRecord)
