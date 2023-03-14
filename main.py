@@ -1,27 +1,22 @@
 import orjson
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from enum import Enum
+
 
 class GunRecord(BaseModel):
     name: str
-    year: int
-    state: str
-    inventor: str
-    munition: str
-    cadence: int
-    velocity: int
-    lenght: int
-    barrel_lenght: int
+    manufacturer: str
+    trigger: str
+    length: int
+    barrel_length: int
     weight: float
-    description: str
-    rating: float
+    magazine: int
     url: str
-    groups: set[str]
 
     @staticmethod
     def from_dict(data: dict):
-        groups = set(data.pop('groups', []))
-        record = GunRecord(groups=groups, **data)
+        record = GunRecord(**data)
         return record
 
 
@@ -83,8 +78,13 @@ async def get_guns(id_gun: int):
     return db.get(id_gun)
 
 
+@app.get("/guns/{category}")
+async def get_cat(category: Cat):
+    return {"category": category}
+
+
 @app.post("/guns", response_model=GunRecord)
-async def post_movies(gun: GunRecord):
+async def post_guns(gun: GunRecord):
     db.add(gun)
     return gun
 
